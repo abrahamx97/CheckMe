@@ -1,0 +1,8 @@
+{
+  "name": "CheckMe",
+  "app_id": "be99e24a",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
