@@ -1,23 +1,22 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>Group</ion-title>
+        <ion-title>{{fullname}}</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
     <ion-list>
         <ion-item *ngFor="let student of students">
-
-            <ion-avatar item-start style="margin-right:0px;">
+            <!--<ion-avatar item-start style="margin-right:0px;">
                 <ion-icon *ngIf=" student.absences <=3" name="checkmark-circle" color="secondary"></ion-icon>
                 <ion-icon *ngIf=" student.absences >3 && student.absences <=6" name="alert" color="warning"></ion-icon>
                 <ion-icon *ngIf=" student.absences >6" name="close-circle" color="danger"></ion-icon>
-            </ion-avatar>
+            </ion-avatar>-->
             <h2>{{student.name}}</h2>
-            <div>
+            <div class="options">
                 <button ion-button icon-only clear *ngFor="let option of options">
                     <ion-icon color ="{{option.defaultColor}}" name="{{option.icon}}"></ion-icon>
                 </button>
