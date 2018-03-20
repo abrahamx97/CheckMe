@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Importar grupo</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let student of students">
+            <ion-avatar item-start style="margin-right:0px;">
+                <ion-icon *ngIf=" student.sexo == 'H'" name="man" class="man"></ion-icon>
+                <ion-icon *ngIf=" student.sexo == 'M'" name="woman" class="woman"></ion-icon>
+            </ion-avatar>
+            <div class="name" text-capitalize text-wrap>
+                {{student.nombre}}
+            </div>
+            <div class="id">
+                {{student.matricula}}
+            </div>
+        </ion-item>
+    </ion-list>
+
+    <form #form="ngForm" >
+        <ion-list>
+            <ion-item>
+                <ion-label floating>Nombre</ion-label>
+                <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Grado</ion-label>
+                <ion-select [(ngModel)]="degree_id" name="degree_id">
+                    <ion-option *ngFor="let degree of degrees" value="{{degree.degree}}">{{degree.degree_text}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        <button ion-button block round (click)="loadCsvFile()">Cargar archivo</button>
+
+        <button ion-button block round *ngIf="students.length>0" (click)="saveStudents(form)">Guardar</button>
+    </form>
+</ion-content>
