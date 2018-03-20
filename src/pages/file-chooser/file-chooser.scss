@@ -1,0 +1,15 @@
+page-file-chooser {
+    ion-icon {
+        font-size: 30px;
+    }
+
+    .empty-folder{
+        ion-icon{
+            font-size: 100px;
+            color: rgb(158, 165, 168);
+        }
+
+        font-size: 20px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,29 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>FileChooser</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="empty-folder" *ngIf="endPoints!=null && endPoints.length==0">
+        <ion-icon name="folder-open"></ion-icon><br>
+        Carpeta vacia
+    </div>
+    <ion-list>
+        <button ion-item *ngFor="let endPoint of endPoints" (click)="navigate(endPoint)">
+            <ion-avatar item-start style="margin-right:0px;">
+                <ion-icon *ngIf="endPoint.isFile == true" name="document" color="secondary"></ion-icon>
+                <ion-icon *ngIf=" endPoint.isDirectory == true" name="folder" color="warning"></ion-icon>
+            </ion-avatar>
+            <h2 text-wrap >{{endPoint.name}}</h2>
+        </button>
+    </ion-list>
+    <ion-fab right bottom>
+        <button ion-fab color="primary" *ngIf="urls.length>0" (click)="backDirectory()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>
