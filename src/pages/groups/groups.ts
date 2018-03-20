@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { GroupPage } from '../group/group'
-/**
- * Generated class for the GroupsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+import { GroupsProvider } from '../../providers/groups/groups'
 
 @IonicPage()
 @Component({
@@ -16,22 +12,27 @@ import { GroupPage } from '../group/group'
 })
 export class GroupsPage {
 
-    groups: Array<{ id: number, name: string }>
-    
+    groups: Array<any>
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
-        this.groups = [
-            {id: 1, name: 'Tercero B'},
-            {id: 2, name: 'Primero A'}
-        ]
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, private groupsProvider: GroupsProvider) {
+        this.groupsProvider.all().then(groups => {
+            let dataGroups = new Array<{}>()
+            for(let i=0; i<groups.rows.length; i++){
+                dataGroups.push(groups.rows.item(i))
+            }
+            this.groups=dataGroups
+        }).catch(error => {
+
+        })
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad GroupsPage');
+        
     }
 
-    groupDetail(id : number){
-        this.navCtrl.push(GroupPage, {id: id})
+    groupDetail(group_id, degree_text, name) {
+        this.navCtrl.push(GroupPage, { group_id: group_id, fullname: `${degree_text} ${name}` })
     }
 
 }

@@ -1,15 +1,9 @@
-<!--
-  Generated template for the GroupsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Groups</ion-title>
+        <ion-title>Groupos</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -17,8 +11,8 @@
 
 <ion-content padding>
     <ion-list>
-        <button ion-item *ngFor="let group of groups" (click)="groupDetail(group.id)">
-            {{group.name}}
+        <button ion-item *ngFor="let group of groups" (click)="groupDetail(group.group_id, group.degree_text, group.name)">
+            {{group.degree_text}} &nbsp; {{group.name}}
         </button> 
     </ion-list>
 </ion-content>
