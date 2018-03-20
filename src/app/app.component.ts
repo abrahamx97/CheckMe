@@ -5,47 +5,54 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { GroupsPage } from '../pages/groups/groups';
 import { ConfigurationsPage } from '../pages/configurations/configurations'
-import { DataPage } from '../pages/data/data'
+import { ImportPage } from '../pages/import/import'
+import { ExportPage } from '../pages/export/export'
 
 import { DatabaseProvider } from '../providers/database/database'
 
 @Component({
-  templateUrl: 'app.html'
+    templateUrl: 'app.html'
 })
 export class MyApp {
-    @ViewChild(Nav) nav : Nav
-  rootPage:any = GroupsPage;
+    @ViewChild(Nav) nav: Nav
+    rootPage: any = null;
 
-  pages : Array<{label : string, icon : string, component : any }> = null
+    pages: Array<{ label: string, icon: string, component: any }> = null
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private databaseProvider : DatabaseProvider) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+    constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private databaseProvider: DatabaseProvider, ) {
+        platform.ready().then(() => {
+            statusBar.styleDefault();
+            this.databaseProvider.createDatabase().then(database => {
+                this.databaseProvider.setDatabase(database)
+                return this.databaseProvider.createTables()
+            }).then(result => {
+                return this.databaseProvider.insertDegrees()
+            }).then(inserted => {
+                if (inserted) {
+                    this.rootPage = GroupsPage
+                    splashScreen.hide();
+                }
+            }).catch(error => {
 
-      this.databaseProvider.createDatabase().then(database => {
-        this.databaseProvider.setDatabase(database)
-        return this.databaseProvider.createTables()
-      }).then(()=>{
-          splashScreen.hide();
-      }).catch(error =>
-        this.errorHandler(error))
-    });
+                this.errorHandler(error)
+            })
 
-    this.pages = [
-      {label: 'Grupos', icon: 'people', component: GroupsPage},
-      {label: 'Datos', icon: 'analytics', component: DataPage},
-      {label: 'Configuración', icon: 'options', component: ConfigurationsPage}
-    ]
-  }
+        });
 
-  private errorHandler(error){
+        this.pages = [
+            { label: 'Grupos', icon: 'people', component: GroupsPage },
+            { label: 'Importar', icon: 'arrow-round-down', component: ImportPage },
+            { label: 'Exportar', icon: 'arrow-round-up', component: ExportPage },
+            { label: 'Configuración', icon: 'options', component: ConfigurationsPage }
+        ]
+    }
 
-  }
+    private errorHandler(error) {
 
-  openPage(page){
-      this.nav.setRoot(page.component)
-  }
+    }
+
+    openPage(page) {
+        this.nav.setRoot(page.component)
+    }
 }
 
