@@ -1,20 +1,31 @@
-<!--
-  Generated template for the ExportPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
     <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>export</ion-title>
+        <ion-title>Exportar</ion-title>
     </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="no-scroll">
+    <form #form="ngForm">
+        <ion-list no-lines no-border>
+            <ion-item>
+                <ion-label fixed for="group">Grupo</ion-label>
+                <ion-input disabled name="group" [(ngModel)]="fullname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Solo mes actual</ion-label>
+                <ion-toggle checked="{{onlyMonth}}" [(ngModel)]="onlyMonth" name="onlyMonth" (click)="changeOnlyMonth()"></ion-toggle>
+            </ion-item>
+            <ion-item *ngIf="onlyMonth==false">
+                <ion-label>Fecha inicial</ion-label>
+                <ion-datetime displayFormat="YYYY MMM DD" pickerFormat="YYYY MMM DD" [(ngModel)]="startDate" name="startDate"></ion-datetime>
+            </ion-item>
+            <ion-item *ngIf="onlyMonth==false">
+                <ion-label>Fecha final</ion-label>
+                <ion-datetime displayFormat="YYYY MMM DD" pickerFormat="YYYY MMM DD" [(ngModel)]="endDate" name="endDate"></ion-datetime>
+            </ion-item>
+        </ion-list>
 
+        <button ion-button block round (click)="export(form)">Exportar</button>
+    </form>
 </ion-content>
