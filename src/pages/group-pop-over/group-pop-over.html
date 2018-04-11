@@ -1,0 +1,6 @@
+<ion-list no-lines no-border>
+    <button ion-item *ngFor="let option of options" (click)="selectOption(option.name)">
+        <ion-icon name="{{option.icon}}" color="{{option.color}}" item-start></ion-icon>
+        {{option.label}}
+    </button>
+</ion-list>
