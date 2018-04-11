@@ -1,27 +1,28 @@
 <ion-header>
-
     <ion-navbar>
-        <ion-title>{{fullname}}</ion-title>
+        <ion-title>
+            {{fullname}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only icon-right (click)="moreOptions($event)">
+                <ion-icon name="more"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
     <ion-list>
-        <ion-item *ngFor="let student of students">
-            <!--<ion-avatar item-start style="margin-right:0px;">
-                <ion-icon *ngIf=" student.absences <=3" name="checkmark-circle" color="secondary"></ion-icon>
-                <ion-icon *ngIf=" student.absences >3 && student.absences <=6" name="alert" color="warning"></ion-icon>
-                <ion-icon *ngIf=" student.absences >6" name="close-circle" color="danger"></ion-icon>
-            </ion-avatar>-->
+        <ion-item *ngFor="let student of students; let i = index">
             <h2>{{student.name}}</h2>
             <div class="options">
-                <button ion-button icon-only clear *ngFor="let option of options">
-                    <ion-icon color ="{{option.defaultColor}}" name="{{option.icon}}"></ion-icon>
+                <button ion-button icon-only clear *ngFor="let option of student.options" (click)="changeAttendance(option.name, i)">
+                    <ion-icon color="{{option.defaultColor}}" name="{{option.icon}}"></ion-icon>
                 </button>
             </div>
-            <ion-icon name="arrow-forward" item-end></ion-icon>
+            <!--<ion-icon name="arrow-forward" item-end></ion-icon>-->
         </ion-item>
     </ion-list>
+    <button ion-button block round  color="'secondary'" style="margin-bottom: 24px;"  (click)="saveAttendances()">{{action}}</button>
 </ion-content>
