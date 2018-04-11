@@ -68,6 +68,8 @@ export class ImportPage {
         }).catch(error => {
             this.saveStundentsErrorHandler()
         })
+
+        form.reset()
     }
 
     private saveStundentsErrorHandler() {
