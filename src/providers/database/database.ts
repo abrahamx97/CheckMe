@@ -42,7 +42,7 @@ export class DatabaseProvider {
             );`
         let attendances=`
             create table if not exists attendances(
-                attenndance_id integer primary key,
+                attendance_id integer primary key autoincrement,
                 attendance_date date
             );`
             
@@ -62,7 +62,7 @@ export class DatabaseProvider {
                 foreign key (group_id) references groups(group_id)
             );`
             
-        let attendance_detail=`create table if not exists attendace_detail(
+        let attendance_detail=`create table if not exists attendance_detail(
                 attendance_id integer,
                 student_id integer,
                 type varchar(2),
