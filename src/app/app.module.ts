@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SQLite } from '@ionic-native/sqlite'
 import { File } from '@ionic-native/file'
+import  { AppPreferences } from '@ionic-native/app-preferences'
+import { NativeStorage } from '@ionic-native/native-storage'
 
 import { MyApp } from './app.component';
 import { GroupsPage } from '../pages/groups/groups';
@@ -14,6 +16,8 @@ import { ImportPage } from '../pages/import/import'
 import { ExportPage } from '../pages/export/export'
 import { FileChooserPage } from '../pages/file-chooser/file-chooser'
 import { ConfigurationsPage } from '../pages/configurations/configurations'
+import { GroupPopOverPage } from '../pages/group-pop-over/group-pop-over'
+import { GroupTabsPage } from '../pages/group-tabs/group-tabs'
 
 import { DatabaseProvider } from '../providers/database/database';
 import { GroupsProvider } from '../providers/groups/groups';
@@ -24,13 +28,15 @@ import { DegreesProvider } from '../providers/degrees/degrees';
 @NgModule({
   declarations: [
     MyApp,
+    GroupPopOverPage,
     GroupsPage,
     GroupPage,
     StudentPage,
     ConfigurationsPage,
     ExportPage,
     ImportPage,
-    FileChooserPage
+    FileChooserPage,
+    GroupTabsPage
   ],
   imports: [
     BrowserModule,
@@ -39,13 +45,15 @@ import { DegreesProvider } from '../providers/degrees/degrees';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    GroupPopOverPage,
     GroupsPage,
     GroupPage,
     StudentPage,
     ConfigurationsPage,
     ExportPage,
     ImportPage,
-    FileChooserPage
+    FileChooserPage,
+    GroupTabsPage
   ],
   providers: [
     StatusBar,
@@ -57,7 +65,9 @@ import { DegreesProvider } from '../providers/degrees/degrees';
     GroupsProvider,
     StudentProvider,
     FileChooserProvider,
-    DegreesProvider
+    DegreesProvider,
+    AppPreferences,
+    NativeStorage
   ]
 })
 export class AppModule {}
