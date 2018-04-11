@@ -85,5 +85,47 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+//@import "roboto";
+//@import "noto-sans";
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Montserrat/400/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: medium;
+  font-weight: 500;
+  src: url('../assets/fonts/Montserrat/500/Montserrat-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: semi-bold;
+  font-weight: 600;
+  src: url('../assets/fonts/Montserrat/600/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: bold;
+  font-weight: 700;
+  src: url('../assets/fonts/Montserrat/700/Montserrat-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: extra-bold;
+  font-weight: 800;
+  src: url('../assets/fonts/Montserrat/800/Montserrat-ExtraBold.ttf');
+}
+
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: black;
+  font-weight: 900;
+  src: url('../assets/fonts/Montserrat/900/Montserrat-Black.ttf');
+}
