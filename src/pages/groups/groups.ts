@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { GroupPage } from '../group/group'
+import { GroupTabsPage } from '../group-tabs/group-tabs'
 
 import { GroupsProvider } from '../../providers/groups/groups'
 
@@ -32,7 +32,7 @@ export class GroupsPage {
     }
 
     groupDetail(group_id, degree_text, name) {
-        this.navCtrl.push(GroupPage, { group_id: group_id, fullname: `${degree_text} ${name}` })
+        this.navCtrl.push(GroupTabsPage, { group_id: group_id, fullname: `${degree_text} ${name}` })
     }
 
 }

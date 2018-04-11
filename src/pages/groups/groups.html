@@ -3,13 +3,13 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Groupos</ion-title>
+        <ion-title>Grupos</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="no-scroll">
     <ion-list>
         <button ion-item *ngFor="let group of groups" (click)="groupDetail(group.group_id, group.degree_text, group.name)">
             {{group.degree_text}} &nbsp; {{group.name}}
