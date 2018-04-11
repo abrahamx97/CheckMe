@@ -6,7 +6,7 @@
     </ion-header>
 
     <ion-content class="no-scroll">
-        <ion-list>
+        <ion-list class="side-menu">
             <button ion-item menuClose *ngFor="let page of pages"  (click)="openPage(page)">
                 <ion-icon name="{{page.icon}}"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{page.label}}
             </button>
