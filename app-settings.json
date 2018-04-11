@@ -1,0 +1,53 @@
+[
+    {
+        "type":"group",
+        "title":"Common",
+        "items":[{
+			"title":"Title",
+			"type":"textfield",
+			"key":"title"
+		}, {
+			"title":"Language",
+			"type":"radio",
+			"key":"lang",
+			"default": "en-us",
+			"items":[{
+				"value":"en-us",
+				"title":"English (US)"
+			}, {
+				"value":"en-gb",
+				"title":"English (UK)"
+			}]
+		}, {
+			"title":"Debug",
+			"type":"toggle",
+			"default":false,
+			"key":"debug"
+		}]
+    },{
+		"type":"textfield",
+		"title":"asistencia",
+		"key":"attendance_p",
+		"default": "A"
+	},{
+		"type":"textfield",
+		"title":"retardo",
+		"key":"attendance_l",
+		"default": "R"
+	},{
+		"type":"textfield",
+		"title":"falta",
+		"key":"attendance_a",
+		"default": "F"
+	},{
+		"type":"textfield",
+		"title":"justificante",
+		"key":"attendance_j",
+		"default": "J"
+	},{
+		"type":"textfield",
+		"title":"dia_ignorado",
+		"key":"attendance_i",
+		"default": "I"
+	}
+]
